@@ -1,0 +1,308 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <title></title>
+    <meta charset="utf-8" />
+    <style>
+        @page {
+            size: 21cm 29.7cmt; /* A4 */
+            margin: 1cm 1cm 1cm 1cm; /* Margins: 2.5 cm on each side */
+            mso-page-orientation: portrait;
+        }
+
+        @page Section1 {
+        }
+
+        div.Section1 {
+            page: Section1;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: arial;
+            font-size: 13px;
+        }
+
+        body {
+            background: #f3f3f3;
+        }
+
+
+        .clearfix:after {
+            content: " ";
+            visibility: hidden;
+            display: block;
+            height: 0;
+            clear: both;
+        }
+
+        .fleft {
+            float: left;
+        }
+
+        .fright {
+            float: right;
+        }
+
+        .logo img {
+            width: 230px;
+            position: relative;
+            left: -15px;
+        }
+
+        .sec-head {
+            text-transform: uppercase;
+            font-size: 15px;
+            color: #07476c;
+            padding: 10px 0;
+            padding-bottom: 5px;
+        }
+
+        .light-dark-bg {
+            background-color: lightgray;
+            width: 100%;
+        }
+
+        .width-100px {
+            width: 100px;
+            display: inline-block;
+        }
+
+        .sub-sec {
+            font-size: 15px;
+            text-transform: none;
+            margin:30px;
+        }
+
+        .p-0 {
+            padding: 0;
+        }
+
+        .p-5 {
+            padding: 5px;
+        }
+
+        .p-0-5 {
+            padding-left: 5px;
+            padding-right: 5px;
+        }
+
+        .p-5-0 {
+            padding-top: 5px;
+            padding-bottom: 5px;
+        }
+        .p-10-0 {
+            padding-top: 10px;
+            padding-bottom: 10px;
+        }
+
+        .b {
+            font-weight: bold;
+        }
+
+        .u {
+            text-decoration: underline;
+        }
+
+        .page {
+            max-width: 1000px;
+            margin: auto;
+            box-sizing: border-box;
+            padding: 40px;
+            background: #fff;
+        }
+
+        .no-list-style {
+            list-style: none;
+        }
+
+        .list-style-decimal {
+            list-style-type: decimal;
+        }
+
+        .list-style-bullit {
+            list-style-type: circle;
+        }
+
+        .address {
+            font-size: 12px;
+        }
+
+        .body-section {
+            margin: 0px 0;
+            padding-bottom: 0px;
+        }
+
+        .attend-list li {
+            width: 50%;
+            float: left;
+            font-size: 13px;
+        }
+
+        .m-10-0 {
+            margin-top: 0px;
+            margin-bottom: 10px;
+        }
+
+        .m-l-15 {
+            margin-left: 15px;
+        }
+
+        .m-l-25 {
+            margin-left: 25px;
+        }
+
+        .m-l-30 {
+            margin-left: 30px;
+        }
+
+        .m-l-50 {
+            margin-left: 50px;
+        }
+    </style>
+</head>
+<body>
+    <section class="page">
+        <section class="head clearfix">
+            <div class="logo fleft">
+                <img src="http://localhost:11111/AssociationPlatform/Images/meetinglogo/NCHDA.png" alt="" />
+            </div>
+            <div class="address fright">
+                <p>Quarterly Meeting</p>
+                <p>[DATE] | [TIME AM/PM]</p>
+            </div>
+        </section>
+        <section class="body">
+            <section class="body-section clearfix">
+                <p class="sec-head b">ATTENDEES </p>
+                <div class="attend-list">
+                    <ul class="no-list-style">
+                        <li>
+                            [Name], [Company]
+                        </li>
+                        <li>
+                            [Name], [Company]
+                        </li>
+                        <li>
+                            [Name], [Company]
+                        </li>
+                        <li>
+                            [Name], [Company]
+                        </li>
+                        <li>
+                            [Name], [Company]
+                        </li>
+                    </ul>
+                </div>
+            </section>
+            <section class="body-section clearfix light-dark-bg">
+                <p class="sec-head b">MASTER STRATEGY, CREATIVE, GROUP DECISION</p>
+                <div class="content m-l-50">
+                    <p>[TOPIC]. [Decision Made]</p>
+                    <p>MM/DD @ #:##AM/PM. [Event Name] @ [Location], [City]</p>
+                </div>
+            </section>
+            <section class="body-section clearfix ">
+                <p class="sec-head b">MEETING SUMMARY</p>
+                <p class="sec-head sub-sec p-0">[ASSOCIATION NAME]</p>
+                <div class="content m-l-30">
+                    <p>Discussion</p>
+                    <ul class="m-l-30">
+                        <li>[Items discussed]</li>
+                    </ul>
+                    <p>Conclusions</p>
+                    <ul class="m-l-30">
+                        <li>[Decisions made]</li>
+                    </ul>
+                </div>
+                <div class="content m-10-0 light-dark-bg">
+                    <p class="b">Association Action Items</p>
+                    <ul class="list-style-decimal m-l-30">
+                        <li>Action Item</li>
+                        <li>Action Item</li>
+                        <li>Action Item</li>
+                        <li>Action Item</li>
+                    </ul>
+                </div>
+
+                <div class="content">
+                    <p class="sec-head sub-sec p-0 b">Media</p>
+                    <div class="content m-l-30">
+                        <p>Discussion</p>
+                        <ul class="m-l-30">
+                            <li>[Items discussed]</li>
+                        </ul>
+                        <p>Conclusions</p>
+                        <ul class="m-l-30">
+                            <li>[Decisions made]</li>
+                        </ul>
+                    </div>
+                </div>
+                <div class="content m-10-0 light-dark-bg">
+                    <p class="b">Media Action Items</p>
+                    <ul class="list-style-decimal m-l-30">
+                        <li>Action Item</li>
+                        <li>Action Item</li>
+                        <li>Action Item</li>
+                        <li>Action Item</li>
+                    </ul>
+                </div>
+            </section>
+            <section class="body-section clearfix">
+                <p class="sec-head b">PERFORMANCE RECAP</p>
+                <p class="m-l-50">[Performance Points]</p>
+                <div class="content m-l-50">
+                    <p class="sec-head sub-sec p-0 b">Retail Sales Performance</p>
+                    <p class="b u"> YDT </p>
+                    <div><span class="width-100px">DAA</span>[DAA] <span>%</span></div>
+                    <div><span class="width-100px">District</span>[DISTRICT]<span>%</span></div>
+                    <div><span class="width-100px">Zone</span>[ZONE]<span>%</span></div>
+                    <div><span class="width-100px">Nation</span>[NATION] <span>%</span></div>
+                </div>
+            </section>
+            <section class="body-section clearfix ">
+                <p class="sec-head b">ACTION ITEMS </p>
+                <div class="content m-10-0">
+                    <p class="b"> Action Items</p>
+                    <ul class="list-style-decimal m-l-30">
+                        <li>Action Item</li>
+                        <li>Action Item</li>
+                        <li>Action Item</li>
+                        <li>Action Item</li>
+                    </ul>
+                </div>
+                <div class="content m-10-0">
+                    <p class="b"> Action Items</p>
+                    <ul class="list-style-decimal m-l-30">
+                        <li>Action Item</li>
+                        <li>Action Item</li>
+                        <li>Action Item</li>
+                        <li>Action Item</li>
+                    </ul>
+                </div>
+                <div class="content m-10-0">
+                    <p class="b"> Action Items</p>
+                    <ul class="list-style-decimal m-l-30">
+                        <li>Action Item</li>
+                        <li>Action Item</li>
+                        <li>Action Item</li>
+                        <li>Action Item</li>
+                    </ul>
+                </div>
+                <div class="content m-10-0">
+                    <p class="b"> Action Items</p>
+                    <ul class="list-style-decimal m-l-30">
+                        <li>Action Item</li>
+                        <li>Action Item</li>
+                        <li>Action Item</li>
+                        <li>Action Item</li>
+                    </ul>
+                </div>
+            </section>
+        </section>
+        <section class="foot"></section>
+    </section>
+</body>
+</html>
