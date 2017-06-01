@@ -7,6 +7,10 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ConversionFromHTMLtoDOC", "
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ConsoleApplication1", "ConsoleApplication1\ConsoleApplication1.csproj", "{4975E1CA-4BAC-4103-B600-0A7BF5486984}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "HtmlToDocUsingHandlerBar", "HtmlToDocUsingHandlerBar\HtmlToDocUsingHandlerBar.csproj", "{1A2080D6-F8C2-47FC-982F-5AEAAAEA0D7E}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DocWithHeader", "DocWithHeader\DocWithHeader.csproj", "{D0B166D6-4EDC-441E-8FF1-7F139A20F969}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -21,6 +25,14 @@ Global
 		{4975E1CA-4BAC-4103-B600-0A7BF5486984}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{4975E1CA-4BAC-4103-B600-0A7BF5486984}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{4975E1CA-4BAC-4103-B600-0A7BF5486984}.Release|Any CPU.Build.0 = Release|Any CPU
+		{1A2080D6-F8C2-47FC-982F-5AEAAAEA0D7E}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{1A2080D6-F8C2-47FC-982F-5AEAAAEA0D7E}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{1A2080D6-F8C2-47FC-982F-5AEAAAEA0D7E}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{1A2080D6-F8C2-47FC-982F-5AEAAAEA0D7E}.Release|Any CPU.Build.0 = Release|Any CPU
+		{D0B166D6-4EDC-441E-8FF1-7F139A20F969}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{D0B166D6-4EDC-441E-8FF1-7F139A20F969}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{D0B166D6-4EDC-441E-8FF1-7F139A20F969}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{D0B166D6-4EDC-441E-8FF1-7F139A20F969}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

@@ -1,195 +1,248 @@
-﻿using DocumentFormat.OpenXml.Packaging;
-using DocumentFormat.OpenXml.Wordprocessing;
+﻿using System.IO;
 using DocumentFormat.OpenXml;
+using DocumentFormat.OpenXml.Packaging;
+using DocumentFormat.OpenXml.Wordprocessing;
+using A = DocumentFormat.OpenXml.Drawing;
+using DW = DocumentFormat.OpenXml.Drawing.Wordprocessing;
+using PIC = DocumentFormat.OpenXml.Drawing.Pictures;
+using System.Linq;
 
 class Program
 {
     static void Main(string[] args)
     {
-        string documentPath = @"E:\Ankita\MeetingWorddoc\wordTestDocument.docx";
-
-        using (WordprocessingDocument package =
-            WordprocessingDocument.Create(
-            documentPath, WordprocessingDocumentType.Document))
+        string documentPath = @"E:\\testWord12.docx";
+        string fileName = @"E:\Ankita\Project\ConversionFromHTMLtoDOC\DocWithHeader\GCHDA.png";
+        using (WordprocessingDocument wordprocessingDocument =
+                   WordprocessingDocument.Open(documentPath, true))
         {
-            AddParts(package);
+            MainDocumentPart mainPart = wordprocessingDocument.MainDocumentPart;
+            HeaderPart hdPart = mainPart.GetPartsOfType<HeaderPart>().FirstOrDefault();
+            Header hd = hdPart.Header;
+
+            ImagePart imagePart = hdPart.AddImagePart(ImagePartType.Jpeg);
+
+            using (FileStream stream = new FileStream(fileName, FileMode.Open))
+            {
+                imagePart.FeedData(stream);
+            }
+            AddImageToBody(hd, hdPart.GetIdOfPart(imagePart));
         }
+
     }
+    //public static void InsertAPicture(string document, string fileName)
+    //{
+    //    using (WordprocessingDocument wordprocessingDocument =
+    //        WordprocessingDocument.Open(document, true))
+    //    {
+           
+           
+    //        MainDocumentPart mainPart = wordprocessingDocument.MainDocumentPart;
+    //        foreach (var header in wordprocessingDocument.MainDocumentPart.HeaderParts)
+    //        {
+    //            ImagePart imagePart = header.AddImagePart(ImagePartType.Jpeg);
+    //            using (FileStream stream = new FileStream(fileName, FileMode.Open))
+    //            {
+    //                imagePart.FeedData(stream);
+    //            }
+    //            AddImageToBody(wordprocessingDocument, mainPart.GetIdOfPart(imagePart));
+    //        }
 
-    private static void AddParts(WordprocessingDocument parent)
+    //        //ImagePart imagePart = mainPart.AddImagePart(ImagePartType.Jpeg);
+
+          
+
+           
+    //    }
+    //}
+    private static void AddImageToBody(Header hd, string relationshipId)
     {
-        var mainDocumentPart = parent.AddMainDocumentPart();
-
-        GenerateMainDocumentPart().Save(mainDocumentPart);
-
-        var documentSettingsPart =
-            mainDocumentPart.AddNewPart
-            <DocumentSettingsPart>("rId1");
-
-        GenerateDocumentSettingsPart().Save(documentSettingsPart);
-
-        var firstPageHeaderPart =
-            mainDocumentPart.AddNewPart<HeaderPart>("rId2");
-
-        GeneratePageHeaderPart(
-            "First page header").Save(firstPageHeaderPart);
-
-        var firstPageFooterPart =
-            mainDocumentPart.AddNewPart<FooterPart>("rId3");
-
-        GeneratePageFooterPart(
-            "First page footer").Save(firstPageFooterPart);
-
-        var evenPageHeaderPart =
-            mainDocumentPart.AddNewPart<HeaderPart>("rId4");
-
-        GeneratePageHeaderPart(
-            "Even page header").Save(evenPageHeaderPart);
-
-        var evenPageFooterPart =
-            mainDocumentPart.AddNewPart<FooterPart>("rId5");
-
-        GeneratePageFooterPart(
-            "Even page footer").Save(evenPageFooterPart);
-
-        var oddPageheaderPart =
-            mainDocumentPart.AddNewPart<HeaderPart>("rId6");
-
-        GeneratePageHeaderPart(
-            "Odd page header").Save(oddPageheaderPart);
-
-        var oddPageFooterPart =
-            mainDocumentPart.AddNewPart<FooterPart>("rId7");
-
-        GeneratePageFooterPart(
-            "Odd page footer").Save(oddPageFooterPart);
-    }
-
-    private static Document GenerateMainDocumentPart()
-    {
+        // Define the reference of the image.
         var element =
-            new Document(
-                new Body(
-                    new Paragraph(
-                        new Run(
-                            new Text("Page 1 content"))
-                    ),
-                    new Paragraph(
-                        new Run(
-                            new Break() { Type = BreakValues.Page })
-                    ),
-                    new Paragraph(
-                        new Run(
-                            new LastRenderedPageBreak(),
-                            new Text("Page 2 content"))
-                    ),
-                    new Paragraph(
-                        new Run(
-                            new Break() { Type = BreakValues.Page })
-                    ),
-                    new Paragraph(
-                        new Run(
-                            new LastRenderedPageBreak(),
-                            new Text("Page 3 content"))
-                    ),
-                    new Paragraph(
-                        new Run(
-                            new Break() { Type = BreakValues.Page })
-                    ),
-                    new Paragraph(
-                        new Run(
-                            new LastRenderedPageBreak(),
-                            new Text("Page 4 content"))
-                    ),
-                    new Paragraph(
-                        new Run(
-                            new Break() { Type = BreakValues.Page })
-                    ),
-                    new Paragraph(
-                        new Run(
-                            new LastRenderedPageBreak(),
-                            new Text("Page 5 content"))
-                    ),
-                    new SectionProperties(
-                        new HeaderReference()
-                        {
-                            Type = HeaderFooterValues.First,
-                            Id = "rId2"
-                        },
-                        new FooterReference()
-                        {
-                            Type = HeaderFooterValues.First,
-                            Id = "rId3"
-                        },
-                        new HeaderReference()
-                        {
-                            Type = HeaderFooterValues.Even,
-                            Id = "rId4"
-                        },
-                        new FooterReference()
-                        {
-                            Type = HeaderFooterValues.Even,
-                            Id = "rId5"
-                        },
-                        new HeaderReference()
-                        {
-                            Type = HeaderFooterValues.Default,
-                            Id = "rId6"
-                        },
-                        new FooterReference()
-                        {
-                            Type = HeaderFooterValues.Default,
-                            Id = "rId7"
-                        },
-                        new PageMargin()
-                        {
-                            Top = 1440,
-                            Right = (UInt32Value)1440UL,
-                            Bottom = 1440,
-                            Left = (UInt32Value)1440UL,
-                            Header = (UInt32Value)720UL,
-                            Footer = (UInt32Value)720UL,
-                            Gutter = (UInt32Value)0UL
-                        },
-                        new TitlePage()
-                    )));
+             new Drawing(
+                 new DW.Inline(
+                     new DW.Extent() { Cx = 990000L, Cy = 792000L },
+                     new DW.EffectExtent()
+                     {
+                         LeftEdge = 0L,
+                         TopEdge = 0L,
+                         RightEdge = 0L,
+                         BottomEdge = 0L
+                     },
+                     new DW.DocProperties()
+                     {
+                         Id = (UInt32Value)1U,
+                         Name = "Picture 1"
+                     },
+                     new DW.NonVisualGraphicFrameDrawingProperties(
+                         new A.GraphicFrameLocks() { NoChangeAspect = true }),
+                     new A.Graphic(
+                         new A.GraphicData(
+                             new PIC.Picture(
+                                 new PIC.NonVisualPictureProperties(
+                                     new PIC.NonVisualDrawingProperties()
+                                     {
+                                         Id = (UInt32Value)0U,
+                                         Name = "New Bitmap Image.jpg"
+                                     },
+                                     new PIC.NonVisualPictureDrawingProperties()),
+                                 new PIC.BlipFill(
+                                     new A.Blip(
+                                         new A.BlipExtensionList(
+                                             new A.BlipExtension()
+                                             {
+                                                 Uri =
+                                                   "{28A0092B-C50C-407E-A947-70E740481C1C}"
+                                             })
+                                     )
+                                     {
+                                         Embed = relationshipId,
+                                         CompressionState =
+                                         A.BlipCompressionValues.Print
+                                     },
+                                     new A.Stretch(
+                                         new A.FillRectangle())),
+                                 new PIC.ShapeProperties(
+                                     new A.Transform2D(
+                                         new A.Offset() { X = 0L, Y = 0L },
+                                         new A.Extents() { Cx = 990000L, Cy = 792000L }),
+                                     new A.PresetGeometry(
+                                         new A.AdjustValueList()
+                                     )
+                                     { Preset = A.ShapeTypeValues.Rectangle }))
+                         )
+                         { Uri = "http://schemas.openxmlformats.org/drawingml/2006/picture" })
+                 )
+                 {
+                     DistanceFromTop = (UInt32Value)0U,
+                     DistanceFromBottom = (UInt32Value)0U,
+                     DistanceFromLeft = (UInt32Value)0U,
+                     DistanceFromRight = (UInt32Value)0U,
+                     EditId = "50D07946"
+                 });
 
-        return element;
+        // Append the reference to the header, the element should be in a Run.
+        hd.AppendChild(new Paragraph(new Run(element)));
     }
 
-    private static Footer GeneratePageFooterPart(string FooterText)
-    {
-        var element =
-            new Footer(
-                new Paragraph(
-                    new ParagraphProperties(
-                        new ParagraphStyleId() { Val = "Footer" }),
-                    new Run(
-                        new Text(FooterText))
-                ));
+    //private static void AddImageToBody(WordprocessingDocument wordDoc, string relationshipId)
+    //{
+    //    // Define the reference of the image.
+    //    var element =
+    //         new Drawing(
+    //             new DW.Inline(
+    //                 new DW.Extent() { Cx = 990000L, Cy = 792000L },
+    //                 new DW.EffectExtent()
+    //                 {
+    //                     LeftEdge = 0L,
+    //                     TopEdge = 0L,
+    //                     RightEdge = 0L,
+    //                     BottomEdge = 0L
+    //                 },
+    //                 new DW.DocProperties()
+    //                 {
+    //                     Id = (UInt32Value)1U,
+    //                     Name = "Picture 1"
+    //                 },
+    //                 new DW.NonVisualGraphicFrameDrawingProperties(
+    //                     new A.GraphicFrameLocks() { NoChangeAspect = true }),
+    //                 new A.Graphic(
+    //                     new A.GraphicData(
+    //                         new PIC.Picture(
+    //                             new PIC.NonVisualPictureProperties(
+    //                                 new PIC.NonVisualDrawingProperties()
+    //                                 {
+    //                                     Id = (UInt32Value)0U,
+    //                                     Name = "New Bitmap Image.jpg"
+    //                                 },
+    //                                 new PIC.NonVisualPictureDrawingProperties()),
+    //                             new PIC.BlipFill(
+    //                                 new A.Blip(
+    //                                     new A.BlipExtensionList(
+    //                                         new A.BlipExtension()
+    //                                         {
+    //                                             Uri =
+    //                                                "{28A0092B-C50C-407E-A947-70E740481C1C}"
+    //                                         })
+    //                                 )
+    //                                 {
+    //                                     Embed = relationshipId,
+    //                                     CompressionState =
+    //                                     A.BlipCompressionValues.Print
+    //                                 },
+    //                                 new A.Stretch(
+    //                                     new A.FillRectangle())),
+    //                             new PIC.ShapeProperties(
+    //                                 new A.Transform2D(
+    //                                     new A.Offset() { X = 0L, Y = 0L },
+    //                                     new A.Extents() { Cx = 990000L, Cy = 792000L }),
+    //                                 new A.PresetGeometry(
+    //                                     new A.AdjustValueList()
+    //                                 )
+    //                                 { Preset = A.ShapeTypeValues.Rectangle }))
+    //                     )
+    //                     { Uri = "http://schemas.openxmlformats.org/drawingml/2006/picture" })
+    //             )
+    //             {
+    //                 DistanceFromTop = (UInt32Value)0U,
+    //                 DistanceFromBottom = (UInt32Value)0U,
+    //                 DistanceFromLeft = (UInt32Value)0U,
+    //                 DistanceFromRight = (UInt32Value)0U,
+    //                 EditId = "50D07946"
+    //             });
 
-        return element;
-    }
+    //    // Append the reference to body, the element should be in a Run.
+    //    //wordDoc.MainDocumentPart.Document.Body.AppendChild(new Paragraph(new Run(element)));
+    //}
+    //private static Header GeneratePageHeaderPart(string headerText)
+    //{
+    //    //Header hdr = new Header(new Paragraph(new Run(LoadImage(_agLogoRel, _agLogoFilename, "name" + _agLogoRel, 2.57, 0.73))));
+    //    //return hdr;
+    //}
+    //private static Drawing LoadImage(string relationshipId,
+    //                         string filename,
+    //                         string picturename,
+    //                         double inWidth,
+    //                         double inHeight)
+    //{
+    //    //double emuWidth = Konsts.EmusPerInch * inWidth;
+    //    //double emuHeight = Konsts.EmusPerInch * inHeight;
 
-    private static Header GeneratePageHeaderPart(string HeaderText)
-    {
-        var element =
-            new Header(
-                new Paragraph(
-                    new ParagraphProperties(
-                        new ParagraphStyleId() { Val = "Header" }),
-                    new Run(
-                        new Text(HeaderText))
-                ));
+    //    var element = new Drawing(
+    //        new DW.Inline(
+    //       // new DW.Extent { Cx = (Int64Value)emuWidth, Cy = (Int64Value)emuHeight },
+    //        new DW.EffectExtent { LeftEdge = 0L, TopEdge = 0L, RightEdge = 0L, BottomEdge = 0L },
+    //        new DW.DocProperties { Id = (UInt32Value)1U, Name = picturename },
+    //        new DW.NonVisualGraphicFrameDrawingProperties(
+    //        new A.GraphicFrameLocks { NoChangeAspect = true }),
+    //        new A.Graphic(
+    //        new A.GraphicData(
+    //        new PIC.Picture(
+    //        new PIC.NonVisualPictureProperties(
+    //        new PIC.NonVisualDrawingProperties { Id = (UInt32Value)0U, Name = filename },
+    //        new PIC.NonVisualPictureDrawingProperties()),
+    //        new PIC.BlipFill(
+    //        new A.Blip(
+    //        new A.BlipExtensionList(
+    //        new A.BlipExtension { Uri = "{28A0092B-C50C-407E-A947-70E740481C1C}" }))
+    //        {
+    //            Embed = relationshipId,
+    //            CompressionState = A.BlipCompressionValues.Print
+    //        },
+    //        new A.Stretch(
+    //        new A.FillRectangle())),
+    //        new PIC.ShapeProperties(
+    //        new A.Transform2D(
+    //        new A.Offset { X = 0L, Y = 0L },
+    //       // new A.Extents { Cx = (Int64Value)emuWidth, Cy = (Int64Value)emuHeight }),
+    //        new A.PresetGeometry(
+    //        new A.AdjustValueList())
+    //        { Preset = A.ShapeTypeValues.Rectangle })))
+    //        {
+    //            Uri = "http://schemas.openxmlformats.org/drawingml/2006/picture"
+    //        }))
+    //       );
+    //    return element;
+    //}
 
-        return element;
-    }
-
-    private static Settings GenerateDocumentSettingsPart()
-    {
-        var element =
-            new Settings(new EvenAndOddHeaders());
-
-        return element;
-    }
 }

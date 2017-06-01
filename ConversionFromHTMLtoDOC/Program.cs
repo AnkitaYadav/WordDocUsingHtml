@@ -73,7 +73,8 @@ namespace ConversionFromHTMLtoDOC
             font-size: 15px;
             color: #07476c;
             padding: 10px 0;
-            padding-bottom: 5px;
+            padding-bottom: 20px;
+            margin-bottom:5px;
         }
 
         .light-dark-bg {
@@ -159,6 +160,10 @@ namespace ConversionFromHTMLtoDOC
 
         .m-l-15 {
             margin-left: 15px;
+        }
+        .m-l-5
+        {
+          margin-left: 5px;
         }
 
         .m-l-25 {
@@ -282,7 +287,7 @@ namespace ConversionFromHTMLtoDOC
                     File.WriteAllBytes(filename, generatedDocument.ToArray());
                 }
 
-                System.Diagnostics.Process.Start(filename);
+               
 
 
 

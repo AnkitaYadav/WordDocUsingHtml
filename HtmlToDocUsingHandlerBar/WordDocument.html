@@ -1,0 +1,391 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <title></title>
+    <meta charset="utf-8" />
+    <!--<style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: arial;
+            font-size: 13px;
+        }
+
+        body {
+            background: #f3f3f3;
+        }
+
+
+        .clearfix:after {
+            content: " ";
+            visibility: hidden;
+            display: block;
+            height: 0;
+            clear: both;
+        }
+
+        .fleft {
+            float: left;
+        }
+
+        .fright {
+            float: right;
+        }
+
+        .logo img {
+            width: 230px;
+            position: relative;
+            left: -15px;
+        }
+
+        .sec-head {
+            text-transform: uppercase;
+            font-size: 15px;
+            color: #07476c;
+            padding: 10px 0;
+            padding-bottom: 5px;
+        }
+
+        .light-dark-bg {
+            background: #f3f3f3;
+        }
+
+        .width-100px {
+            width: 100px;
+            display: inline-block;
+        }
+
+        .sub-sec {
+            font-size: 13px;
+            text-transform: none;
+        }
+
+        .p-0 {
+            padding: 0;
+        }
+
+        .p-5 {
+            padding: 5px;
+        }
+
+        .p-0-5 {
+            padding-left: 5px;
+            padding-right: 5px;
+        }
+
+        .p-5-0 {
+            padding-top: 5px;
+            padding-bottom: 5px;
+        }
+
+        .b {
+            font-weight: bold;
+        }
+
+        .u {
+            text-decoration: underline;
+        }
+
+        .page {
+            max-width: 1000px;
+            margin: auto;
+            box-sizing: border-box;
+            padding: 40px;
+            background: #fff;
+        }
+
+        .no-list-style {
+            list-style: none;
+        }
+
+        .list-style-decimal {
+            list-style-type: decimal;
+        }
+
+        .list-style-bullit {
+            list-style-type: circle;
+        }
+
+        .address {
+            font-size: 12px;
+        }
+
+        .body-section {
+            margin: 20px 0;
+            padding-bottom: 10px;
+        }
+
+        .attend-list li {
+            width: 50%;
+            float: left;
+            font-size: 13px;
+        }
+
+        .m-10-0 {
+            margin-top: 10px;
+            margin-bottom: 10px;
+        }
+
+        .m-l-15 {
+            margin-left: 15px;
+        }
+
+        .m-l-25 {
+            margin-left: 25px;
+        }
+
+        .m-l-30 {
+            margin-left: 30px;
+        }
+
+        .m-l-50 {
+            margin-left: 50px;
+        }
+    </style>-->
+    <style type="text/css">
+           * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: arial;
+            font-size: 13px;
+        }
+
+        body {
+            background: #f3f3f3;
+        }
+
+
+        .clearfix:after {
+            content: ' ';
+            visibility: hidden;
+            display: block;
+            height: 0;
+            clear: both;
+        }
+
+        .fleft {
+            float: left;
+        }
+
+        .fright {
+            float: right;
+        }
+
+        .logo img {
+            width: 230px;
+            position: relative;
+            left: -15px;
+        }
+
+        .sec-head {
+            text-transform: uppercase;
+            font-size: 15px;
+            color: #07476c;
+            padding: 10px 0;
+            padding-bottom: 20px;
+            margin-bottom:5px;
+        }
+
+        .light-dark-bg {
+            background-color: lightgray;
+            width: 100%;
+        }
+
+        .width-100px {
+            width: 100px;
+            display: inline-block;
+        }
+
+        .sub-sec {
+            font-size: 15px;
+            text-transform: none;
+        }
+
+        .p-0 {
+            padding: 0;
+        }
+
+        .p-5 {
+            padding: 5px;
+        }
+
+        .p-0-5 {
+            padding-left: 5px;
+            padding-right: 5px;
+        }
+
+        .p-5-0 {
+            padding-top: 5px;
+            padding-bottom: 5px;
+        }
+
+        .b {
+            font-weight: bold;
+        }
+
+        .u {
+            text-decoration: underline;
+        }
+
+        .page {
+            max-width: 1000px;
+            margin: auto;
+            box-sizing: border-box;
+            padding: 40px;
+            background: #fff;
+        }
+
+        .no-list-style {
+            list-style: none;
+        }
+
+        .list-style-decimal {
+            list-style-type: decimal;
+        }
+
+        .list-style-bullit {
+            list-style-type: circle;
+        }
+
+        .address {
+            font-size: 12px;
+        }
+
+        .body-section {
+            margin: 0px 0;
+            padding-bottom: 0px;
+        }
+
+        .attend-list li {
+            width: 50%;
+            float: left;
+            font-size: 13px;
+        }
+
+        .m-10-0 {
+            margin-top: 0px;
+            margin-bottom: 0px;
+        }
+
+        .m-l-15 {
+            margin-left: 15px;
+        }
+        .m-l-5
+        {
+          margin-left: 5px;
+        }
+
+        .m-l-25 {
+            margin-left: 25px;
+        }
+
+        .m-l-30 {
+            margin-left: 30px;
+            margin-top: 5px;
+            margin-bottom: 5px;
+            
+        }
+
+        .m-l-50 {
+            margin-left: 50px;
+        }
+        .p-20-0 {
+            padding-top: 20px;
+            padding-bottom: 20px;
+        }
+        .m-b-0 {
+            margin-bottom:0px;
+        }
+        .m-t-0 {
+            margin-top:0px;
+        }
+    </style>
+</head>
+<body>
+    <section class="page">
+        <section class="body">
+            <section class="body-section clearfix">
+                <p class="sec-head b">ATTENDEES </p>
+                <div class="attend-list">
+                    <ul>
+                        {{#each Attendees}}
+                        <li>
+                            {{Name}}, {{Company}}
+                        </li>
+                        {{/each}}
+                    </ul>
+                </div>
+            </section>
+            <section class="body-section clearfix light-dark-bg">
+                <p class="sec-head b">MASTER STRATEGY, CREATIVE, GROUP DECISION</p>
+                <div class="content m-l-50">
+                    <p>{{GroupDecision}}</p>
+                </div>
+            </section>
+            <section class="body-section clearfix ">
+                <p class="sec-head b">MEETING SUMMARY</p>
+                {{#each MeetingActions}}
+                <div>
+                    <div class="m-b-0 ">
+                        <p class="sec-head sub-sec p-0 b">{{ActionName}}</p>
+                       <div class="m-l-30">
+                            <p class="b">Discussion</p>
+                            <ul class="m-l-30">
+                                <li>{{Discussion}}</li>
+                            </ul>
+                            <p  class="b">Conclusions</p>
+                            <ul class="m-l-30">
+                                <li>{{Conclusion}}</li>
+                            </ul>
+                        </div>
+                    </div>
+                    <div class="m-t-0">
+                        <p class="b">{{ActionName}} Action Items</p>
+                        <ul class="list-style-decimal m-l-30">
+                            {{#each ActionItems}}
+                            <li>{{Text}}</li>
+                            {{/each}}
+                        </ul>
+                    </div>
+                </div>
+            </section>
+            {{/each}}
+            <section class="body-section clearfix">
+                <p class="sec-head b">PERFORMANCE RECAP</p>
+                <p class="m-l-50">{{PerformancePoints}}</p>
+                <div class="content m-l-50">
+                    <p class="sec-head sub-sec p-0 b">Retail Sales Performance</p>
+                    <p class="b u"> YTD </p>
+                    <!--<ul class="no-list-style">
+                        <li> <span class="width-100px m-l-30">DAA</span> <span>{{Daa}}%</span></li>
+                        <li> <span class="width-100px m-l-30">District</span> <span>{{District}}%</span></li>
+                        <li> <span class="width-100px m-l-30">Zone</span> <span>{{Zone}}%</span></li>
+                        <li> <span class="width-100px m-l-30">Nation</span><span>{{Nation}} %</span></li>
+                    </ul>-->
+
+                        <div> <span class="width-100px">DAA  </span> <span>{{Daa}}%</span></div>
+                        <div> <span class="width-100px">District  </span> <span>{{District}}%</span></div>
+                        <div> <span class="width-100px">Zone  </span> <span>{{Zone}}%</span></div>
+                        <div> <span class="width-100px">Nation  </span><span>{{Nation}} %</span></div>
+
+                </div>
+            </section>
+            <section class="body-section clearfix ">
+                <p class="sec-head b">ACTION ITEMS </p>
+                {{#each MeetingActions}}
+                <div class="content m-10-0">
+                    <p class="b">{{ActionName}} Action Items</p>
+                    <ul class="list-style-decimal m-l-30">
+                        {{#each ActionItems}}
+                        <li>{{Text}}</li>
+                        {{/each}}
+                    </ul>
+                </div>
+                {{/each}}
+            </section>
+        </section>
+    </section>
+</body>
+</html>
